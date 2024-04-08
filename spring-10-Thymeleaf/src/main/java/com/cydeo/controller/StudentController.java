@@ -15,7 +15,7 @@ public class StudentController {
         return "student/register";
     }
     @RequestMapping("/welcome")
-    public String welcome(@RequestParam String name){
+    public String welcome(){
         return "student/welcome";
     }
 
