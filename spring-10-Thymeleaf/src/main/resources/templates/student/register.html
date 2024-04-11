@@ -74,8 +74,8 @@
 <div th:text="${students.get(0).age > 25 ? 'Eligible' : 'Not Eligible'}"></div>
 
 <div>
-    <span th:if="${students.get(0).getState()=='Arizona'}">Arizona</span>
-    <span th:unless="${students.get(0).getState()=='Arizona'}">No Arizona</span>
+    <span th:if="${students.get(2).getState()=='Arizona'}">Arizona</span>
+    <span th:unless="${students.get(2).getState()=='Arizona'}">No Arizona</span>
 </div>
 </body>
 </html>
