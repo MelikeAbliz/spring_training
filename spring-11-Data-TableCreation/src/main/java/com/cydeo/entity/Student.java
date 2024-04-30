@@ -32,4 +32,7 @@ public class Student {
     @Enumerated(EnumType.STRING)
 //    @Enumerated(EnumType.ORDINAL)
     private Gender gender;
+
+    @Transient  //if we don't want to show this field in table and want to keep in the class
+    private String city;
 }
