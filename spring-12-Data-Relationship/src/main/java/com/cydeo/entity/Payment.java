@@ -24,6 +24,12 @@ public class Payment {
 
     @Enumerated(EnumType.STRING)
     private Status paymentStatus;
+    //cascade->both action do same time,when you do something in the table,same thing is happened in the child as well
+//   @OneToOne(cascade = CascadeType.ALL) //when you try to do any action in the payment object
+//   , same action is happened payment detail as well,but generally we don't use type all
+  @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
+   @JoinColumn(name ="payment_detail_id" )//change column forenkey name
+   private PaymentDetail paymentDetail;
 
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
         this.createdDate = createdDate;
