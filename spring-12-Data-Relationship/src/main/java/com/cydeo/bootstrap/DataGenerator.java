@@ -1,8 +1,10 @@
 package com.cydeo.bootstrap;
 
+import com.cydeo.entity.Merchant;
 import com.cydeo.entity.Payment;
 import com.cydeo.entity.PaymentDetail;
 import com.cydeo.enums.Status;
+import com.cydeo.repository.MerchantRepository;
 import com.cydeo.repository.PaymentRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -14,11 +16,12 @@ import java.time.LocalDate;
 public class DataGenerator implements CommandLineRunner {
 
     private final PaymentRepository paymentRepository;
+    private final MerchantRepository merchantRepository;
 
-    public DataGenerator(PaymentRepository paymentRepository) {
+    public DataGenerator(PaymentRepository paymentRepository, MerchantRepository merchantRepository) {
         this.paymentRepository = paymentRepository;
+        this.merchantRepository = merchantRepository;
     }
-
 
     @Override
     public void run(String... args) throws Exception {
@@ -32,12 +35,18 @@ public class DataGenerator implements CommandLineRunner {
 
         payment2.setPaymentDetail(paymentDetail2);
 
+        Merchant merchant1 = new Merchant("AmazonSubMerchant","M123",new BigDecimal("0.25"),new BigDecimal("3.25"),5);
+        payment1.setMerchant(merchant1);
+        payment2.setMerchant(merchant1);
+
+        merchantRepository.save(merchant1);
         paymentRepository.save(payment1);
         paymentRepository.save(payment2);
         System.out.println(paymentRepository.findById(2L).get().getPaymentDetail().getCommissionAmount());
 
         paymentRepository.delete(payment1);//if we use type all delete payment1, also deleted paymentDetail1 as well,because cascade did this
 
+//        merchantRepository.save(merchant1); if we put this code after payment save it give error,because we can not shop without amazon,business logic
 
     }
 
