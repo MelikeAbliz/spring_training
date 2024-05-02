@@ -28,8 +28,10 @@ public class Payment {
 //   @OneToOne(cascade = CascadeType.ALL) //when you try to do any action in the payment object
 //   , same action is happened payment detail as well,but generally we don't use type all
   @OneToOne(cascade = {CascadeType.MERGE,CascadeType.PERSIST})
-   @JoinColumn(name ="payment_detail_id" )//change column forenkey name
+//   @JoinColumn(name ="payment_detail_id" )//change column foreign key name
    private PaymentDetail paymentDetail;
+  @ManyToOne //many payment to one merchant
+  private Merchant merchant;
 
     public Payment(LocalDate createdDate, BigDecimal amount, Status paymentStatus) {
         this.createdDate = createdDate;
