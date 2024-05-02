@@ -22,7 +22,7 @@ public class Merchant {
     private BigDecimal transactionFee;
     private BigDecimal commissionRate;
     private Integer payoutDelayCount;
-//    @OneToMany//spring create another table for us which has two foreign key
+//    @OneToMany//spring create another table for us which has two foreign key,and we are no need third table
 //   @OneToMany(mappedBy = "merchant")//mappedBy name is matched the field's name,if we want to use bidirectional use mappedBy and do not create foreign key in the merchant table
    // ,in oneToMany relationship,ownership belongs to many side,foreign key build in payment table
 //    private List<Payment> paymentList;
