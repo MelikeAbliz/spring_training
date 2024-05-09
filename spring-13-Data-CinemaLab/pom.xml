@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.cydeo</groupId>
-	<artifactId>spring-13-Data-CenimaLab</artifactId>
+	<artifactId>spring-13-Data-CinemaLab</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>spring-13-Data-CenimaLab</name>
 	<description>spring-13-Data-CenimaLab</description>
