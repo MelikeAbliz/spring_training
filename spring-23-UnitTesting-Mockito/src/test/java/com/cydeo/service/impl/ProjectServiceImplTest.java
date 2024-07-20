@@ -52,7 +52,7 @@ class ProjectServiceImplTest {
     @Test
     void getByProjectCode_ExceptionTest() {
 
-        when(projectRepository.findByProjectCode("")).thenThrow(new NoSuchElementException("Project Not Found"));
+        when(projectRepository.findByProjectCode("")).thenThrow(new NoSuchElementException("Project Not Found"));//for behavior of repository stub,providing that
 
         Throwable throwable = assertThrows(NoSuchElementException.class, () -> projectService.getByProjectCode(""));
 

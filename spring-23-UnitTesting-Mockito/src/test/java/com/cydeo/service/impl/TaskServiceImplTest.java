@@ -27,7 +27,7 @@ class TaskServiceImplTest {
     @Mock
     TaskMapper taskMapper;
 
-    @InjectMocks
+    @InjectMocks//inject mock object to this class
     TaskServiceImpl taskServiceImpl;
 
     @ParameterizedTest
@@ -50,7 +50,7 @@ class TaskServiceImplTest {
     }
 
     @Test
-    void findById_BDD_Test() {
+    void findById_BDD_Test() {//BDD structure
 
         // Given
         Task task = new Task();
