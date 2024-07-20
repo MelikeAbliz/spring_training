@@ -12,6 +12,8 @@ class CalculatorTest {
     static void tearDownAll() {
         System.out.println("AfterAll is executed.");
     }
+//    new CalculatorTest().add(); static method only run one time it doesn't matter how many times it's used behind same run this method
+//    new CalculatorTest().add2();
     @BeforeEach
     void setUpEach() {
         System.out.println("BeforeEach is executed.");
