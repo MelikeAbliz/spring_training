@@ -23,7 +23,9 @@ public class StudentControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @MockBean
+    @MockBean //@Mock can not mock interfaces directly ,is nor working with bean,it is working with object directly, needs to work object directly
+    // MockBean is working bean and application contexts itself,meant it is able to find bean that you are creating from students service
+    // ,if you need controller testing use @MockBean,if just check some stuff ,like test methods use @Mock
     StudentService studentService;
 
     @Test
@@ -44,10 +46,13 @@ public class StudentControllerTest {
         String expected = "{\"firstName\": \"Mike\", \"lastName\":  \"Smith\", \"age\": 20}";
         String actual = mvc.perform(MockMvcRequestBuilders.get("/student")
                 .accept(MediaType.APPLICATION_JSON))
-                .andReturn().getResponse().getContentAsString();
+                .andReturn()
+                .getResponse()
+                .getContentAsString();
 
-        // expected -> {"firstName": "Mike", "lastName":  "Smith", "age": 20}
-        // actual   -> {"firstName": "Mike", "lastName":  "Smith", "age": 20}
+        // expected -> {"firstName": "Mike", "lastName":  "Smith"}
+        // actual   -> {"firstName": "Mike", "lastName":  "Smith", "age": 20} if put false ,past the test ,bcz it doesn't care the else
+        // ,if you put true , it will check for exact matching and test fail
 
         JSONAssert.assertEquals(expected, actual, false);
 
